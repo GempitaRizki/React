@@ -1,11 +1,11 @@
 import React from 'react'
 import { Navigate, useRoutes } from 'react-router-dom'
 import DashboardLayout from './MainLayout/Dashboard'
-import RegionView from './ViewApi/RegionView'
 import EmployeeView from './ViewApi/EmployeeView'
-import DependentView from './ViewApi/DependentView'
-
-
+import RegionView from './ViewApi/RegionView'
+import DepartmentView from './ViewApi/DepartmentView'
+import JobView from './ViewApi/JobView'
+import LocationView from './ViewApi/LocationView'
 
 export default function Route() {
   return useRoutes([
@@ -13,7 +13,9 @@ export default function Route() {
         path: '/',
         element: <DashboardLayout />,
         children: [
-            {path: 'dependent',element: <DependentView />},
+            { path: 'job', element: <JobView /> },
+            { path: 'location', element: <LocationView /> },
+            { path: 'department', element: <DepartmentView /> },
             { path: 'region', element: <RegionView /> },
             { path: 'employee', element: <EmployeeView /> },
         ]

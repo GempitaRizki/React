@@ -1,3 +1,4 @@
+/* This example requires Tailwind CSS v2.0+ */
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import { Disclosure } from '@headlessui/react'
@@ -5,11 +6,11 @@ import { MenuIcon, XIcon } from '@heroicons/react/outline'
 
 const navigation = [
     { name: 'Dashboard', href: '', current: true },
-    { name: 'Dependent', href: 'dependent', current: false },
-    { name: 'Dashboard', href: '', current: true },
-    { name: 'Region', href: 'region', current: false },
+    { name: 'Job', href: 'job', current: false },
+    { name: 'Location', href: 'location', current: false },
+    { name: 'Department', href: 'Department', current: false },
     { name: 'Employee', href: 'employee', current: false },
-    { name: 'Baru', href: 'baru', current: false },
+    { name: 'Region', href: 'region', current: false },
 ]
 
 function classNames(...classes) {
@@ -28,7 +29,7 @@ export default function Example() {
         ```
       */}
             <div className="min-h-full">
-                <Disclosure as="nav" className="bg-gray-800">
+                <Disclosure as="nav" className="px-2 bg-red-600 border-gray-900 dark:bg-gray-900 dark:border-gray-900">
                     {({ open }) => (
                         <>
                             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -37,7 +38,7 @@ export default function Example() {
                                         <div className="flex-shrink-0">
                                             <img
                                                 className="h-8 w-8"
-                                                src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+                                                src="https://svgsilh.com/svg/2051708.svg"
                                                 alt="Workflow"
                                             />
                                         </div>
@@ -50,7 +51,7 @@ export default function Example() {
                                                         className={classNames(
                                                             item.current
                                                                 ? 'bg-gray-900 text-white'
-                                                                : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                                                : 'text-gray-300 hover:bg-gray-900 hover:text-white',
                                                             'px-3 py-2 rounded-md text-sm font-medium'
                                                         )}
                                                         aria-current={item.current ? 'page' : undefined}
@@ -83,7 +84,7 @@ export default function Example() {
                                             as="a"
                                             href={item.href}
                                             className={classNames(
-                                                item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                                item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-900 hover:text-white',
                                                 'block px-3 py-2 rounded-md text-base font-medium'
                                             )}
                                             aria-current={item.current ? 'page' : undefined}
@@ -97,11 +98,7 @@ export default function Example() {
                     )}
                 </Disclosure>
 
-                <header className="bg-white shadow">
-                    <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        <h1 className="text-3xl font-bold text-gray-900">{navigation.name}</h1>
-                    </div>
-                </header>
+
                 <main>
                     <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                         {/* Replace with your content */}

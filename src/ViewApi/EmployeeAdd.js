@@ -57,10 +57,10 @@ export default function EmployeeAdd(props) {
     }
     return (
         <div>
-            <div>
-                <label class="block text-sm font-medium text-gray-700">First Name : </label>
+            <div className='relative overflow-x-auto shadow-md sm:rounded-lg'>
+                <label>First Name : </label>
                 <input
-                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-700 block w-full shadow-sm sm:text-sm border-gray-600 rounded-md"
                     type="text"
                     name="first_name"
                     id="first_name"
@@ -71,9 +71,9 @@ export default function EmployeeAdd(props) {
                 />
             </div>
             <div>
-                <label class="block text-sm font-medium text-gray-700">Last Name : </label>
+                <label>Last Name : </label>
                 <input
-                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-700 block w-full shadow-sm sm:text-sm border-gray-600 rounded-md"
                     type="text"
                     name="last_name"
                     id="last_name"
@@ -84,9 +84,9 @@ export default function EmployeeAdd(props) {
                 />
             </div>
             <div>
-                <label class="block text-sm font-medium text-gray-700">Email : </label>
+                <label>Email : </label>
                 <input
-                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-700 block w-full shadow-sm sm:text-sm border-gray-600 rounded-md"
                     type="text"
                     name="email"
                     id="email"
@@ -97,9 +97,9 @@ export default function EmployeeAdd(props) {
                 />
             </div>
             <div>
-                <label class="block text-sm font-medium text-gray-700">Phone Number : </label>
+                <label>Phone Number : </label>
                 <input
-                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-700 block w-full shadow-sm sm:text-sm border-gray-600 rounded-md"
                     type="text"
                     name="phone_number"
                     id="phone_number"
@@ -110,9 +110,9 @@ export default function EmployeeAdd(props) {
                 />
             </div>
             <div>
-                <label class="block text-sm font-medium text-gray-700">Job ID : </label>
+                <label>Job ID : </label>
                 <input
-                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-700 block w-full shadow-sm sm:text-sm border-gray-600 rounded-md"
                     type="text"
                     name="job_id"
                     id="job_id"
@@ -123,9 +123,9 @@ export default function EmployeeAdd(props) {
                 />
             </div>
             <div>
-                <label class="block text-sm font-medium text-gray-700">Salary : </label>
+                <label>Salary : </label>
                 <input
-                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-700 block w-full shadow-sm sm:text-sm border-gray-600 rounded-md"
                     type="text"
                     name="salary"
                     id="salary"
@@ -136,9 +136,9 @@ export default function EmployeeAdd(props) {
                 />
             </div>
             <div>
-                <label class="block text-sm font-medium text-gray-700">Manager ID : </label>
+                <label>Manager ID : </label>
                 <input
-                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-700 block w-full shadow-sm sm:text-sm border-gray-600 rounded-md"
                     type="text"
                     name="manager_id"
                     id="manager_id"
@@ -149,9 +149,9 @@ export default function EmployeeAdd(props) {
                 />
             </div>
             <div>
-                <label class="block text-sm font-medium text-gray-700">Department ID : </label>
+                <label>Department ID : </label>
                 <input
-                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-700 block w-full shadow-sm sm:text-sm border-gray-600 rounded-md"
                     type="text"
                     name="department_id"
                     id="department_id"
@@ -161,6 +161,7 @@ export default function EmployeeAdd(props) {
                     autoComplete="department_id"
                 />
             </div>
+            <div>
             <div>
                 <label class="block text-sm font-medium text-gray-700">Profile : </label>
                 <div>
@@ -192,10 +193,16 @@ export default function EmployeeAdd(props) {
                     </div>
                 </div>
             </div>
-            <div>
-                <button type='submit' className="cursor-pointer inline-flex justify-center py-2 px-2 shadow-sm text-sm font-medium rounded-md text-indigo-500 hover:text-indigo-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={formik.handleSubmit}> Simpan </button>
-                <button className="cursor-pointer inline-flex justify-center py-2 px-2 shadow-sm text-sm font-medium rounded-md text-indigo-500 hover:text-indigo-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={() => props.setDisplay(false)}> Cancel </button>
-            </div>
-        </div>
+                <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                  <button type='submit' className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={formik.handleSubmit}>
+                    Save
+                  </button>
+                  <button className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={() => props.setDisplay(false)}> 
+                  Cancel 
+                  </button>
+                </div>
+              </div>
+            
+          </div>
     )
 }

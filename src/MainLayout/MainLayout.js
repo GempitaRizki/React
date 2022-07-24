@@ -2,9 +2,12 @@ import React from 'react'
 import { Outlet,Link } from 'react-router-dom'
 
 const navigation = [
-    {name: 'Dependent', href: 'dependent', current: false},
-    { name: 'Region', href: 'region', current: false },
+    { name: 'Dashboard', href: '', current: true },
+    { name: 'Job', href: 'job', current: false },
+    { name: 'Location', href: 'location', current: false },
+    { name: 'Department', href: 'department', current: false },
     { name: 'Employee', href: 'employee', current: false },
+    { name: 'Baru', href: 'baru', current: false },
 ]
 
 export default function MainLayout() {
