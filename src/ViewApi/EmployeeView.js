@@ -76,9 +76,9 @@ export default function EmployeeView() {
                                                         <td className="px-6 py-2">{emp.emp_profile}</td>
                                                         <td className="px-6 py-2">
                                                             <td className='py-2'>
-                                                                <button type="button" className="cursor-pointer inline-flex justify-center py-2 px-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={() => onDelete(emp.employee_id)}>Delete</button>
+                                                                <button type="button" className="cursor-pointer inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={() => onDelete(emp.employee_id)}>Delete</button>
                                                             </td>
-                                                            <button type="button" className="cursor-pointer inline-flex justify-center py-2 px-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={() => onClick(emp.employee_id)}>Edit</button>
+                                                            <button type="button" className="cursor-pointer inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={() => onClick(emp.employee_id)}>Edit</button>
                                                         </td>
                                                     </tr>
                                                 )

@@ -10,6 +10,24 @@ const show = async()=>{
     }
 }
 
+const findOne = async (id) => {
+    try {
+        const result = await axios.get(`${config.domain}/region ${id}`)
+        return result.data
+    } catch (error) {
+        return await error.message
+    }
+}
+
+const update = async(data)=>{
+    try {
+        const result = await axios.put(`${config.domain}/region/${data.region_id}`,data)
+        return result
+    } catch (error) {
+        return error
+    }
+}
+
 const create = async(payload)=>{
     try {
         const result = await axios.post(`${config.domain}/region`,payload)
@@ -28,4 +46,4 @@ const deleted = async(id)=>{
     }
 }
 
-export default {show,create,deleted}
+export default {show,findOne,create,update,deleted}

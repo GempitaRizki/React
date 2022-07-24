@@ -7,46 +7,48 @@ export default function EmployeeAdd(props) {
     const [previewImg, setPreviewImg] = useState();
     const [uploaded, setUploaded] = useState(false);
     useEffect(() => {
-        EmployeeApi.findOne(props.id).then(data => {
+      EmployeeApi.findOne(props.id).then(data => {
             setEmployee(data)
         })
     }, [])
+    
     const formik = useFormik({
-        enableReinitialize: true,
-        initialValues: {
-            employee_id: employee.employee_id,
-            first_name: employee.first_name,
-            last_name: employee.last_name,
-            email: employee.email,
-            phone_number: employee.phone_number,
-            job_id: employee.job_id,
-            salary: employee.salary,
-            manager_id: employee.manager_id,
-            department_id: employee.department_id,
-            emp_profile: employee.emp_profile
-        },
-        onSubmit: async (values) => {
-            let payload = new FormData();
-            payload.append('first_name', values.first_name)
-            payload.append('last_name', values.last_name)
-            payload.append('email', values.email)
-            payload.append('phone_number', values.phone_number)
-            payload.append('job_id', parseInt(values.job_id))
-            payload.append('salary', (values.salary))
-            payload.append('manager_id', parseInt(values.manager_id))
-            payload.append('department_id', parseInt(values.department_id))
-            payload.append('emp_profile', values.profile)
-            payload.append('employee_id', values.employee_id)
+      enableReinitialize: true,
+      initialValues: {
+          employee_id: employee.employee_id,
+          first_name: employee.first_name,
+          last_name: employee.last_name,
+          email: employee.email,
+          phone_number: employee.phone_number,
+          job_id: employee.job_id,
+          salary: employee.salary,
+          manager_id: employee.manager_id,
+          department_id: employee.department_id,
+          emp_profile: employee.emp_profile
+      },
+      onSubmit: async (values) => {
+          let payload = new FormData();
+          payload.append('first_name', values.first_name)
+          payload.append('last_name', values.last_name)
+          payload.append('email', values.email)
+          payload.append('phone_number', values.phone_number)
+          payload.append('job_id', parseInt(values.job_id))
+          payload.append('salary', (values.salary))
+          payload.append('manager_id', parseInt(values.manager_id))
+          payload.append('department_id', parseInt(values.department_id))
+          payload.append('emp_profile', values.profile)
+          payload.append('employee_id', values.employee_id)
 
-            await EmployeeApi.update(payload)
-                .then(() => {
-                    props.closeAdd();
-                    window.alert('Data Succesfully Edited')
-                    props.onRefresh();
-                })
+          await EmployeeApi.update(payload)
+              .then(() => {
+                  props.closeAdd();
+                  window.alert('Data Succesfully Edited')
+                  props.onRefresh();
+              })
 
-        }
-    })
+      }
+  })
+
 
     const uploadOnChange = name => event => {
         let reader = new FileReader()
@@ -67,110 +69,141 @@ export default function EmployeeAdd(props) {
     }
     return (
         <div>
-            <div>
-                <label class="block text-sm font-medium text-gray-700">First Name : </label>
-                <input
-                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                    type="text"
-                    name="first_name"
-                    id="first_name"
-                    value={formik.values.first_name}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    autoComplete="first_name"
-                />
-            </div>
-            <div>
-                <label class="block text-sm font-medium text-gray-700">Last Name : </label>
-                <input
-                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                    type="text"
-                    name="last_name"
-                    id="last_name"
-                    value={formik.values.last_name}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    autoComplete="last_name"
-                />
-            </div>
-            <div>
-                <label class="block text-sm font-medium text-gray-700">Email : </label>
-                <input
-                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                    type="text"
-                    name="email"
-                    id="email"
-                    value={formik.values.email}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    autoComplete="email"
-                />
-            </div>
-            <div>
-                <label class="block text-sm font-medium text-gray-700">Phone Number : </label>
-                <input
-                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                    type="text"
-                    name="phone_number"
-                    id="phone_number"
-                    value={formik.values.phone_number}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    autoComplete="phone_number"
-                />
-            </div>
-            <div>
-                <label class="block text-sm font-medium text-gray-700">Job ID : </label>
-                <input
-                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                    type="text"
-                    name="job_id"
-                    id="job_id"
-                    value={formik.values.job_id}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    autoComplete="job_id"
-                />
-            </div>
-            <div>
-                <label class="block text-sm font-medium text-gray-700">Salary : </label>
-                <input
-                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                    type="text"
-                    name="salary"
-                    id="salary"
-                    value={formik.values.salary}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    autoComplete="salary"
-                />
-            </div>
-            <div>
-                <label class="block text-sm font-medium text-gray-700">Manager ID : </label>
-                <input
-                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                    type="text"
-                    name="manager_id"
-                    id="manager_id"
-                    value={formik.values.manager_id}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    autoComplete="manager_id"
-                />
-            </div>
-            <div>
-                <label class="block text-sm font-medium text-gray-700">Department ID : </label>
-                <input
-                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                    type="text"
-                    name="department_id"
-                    id="department_id"
-                    value={formik.values.department_id}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    autoComplete="department_id"
-                />
-            </div>
+        <div className="md:grid  md:gap-6">
+          <div className="mt-5 md:mt-0 md:col-span-2">
+              <div className="shadow sm:rounded-md sm:overflow-hidden">
+                <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
+                  <div className="grid grid-cols-3 gap-6">
+                    <div className="col-span-3 sm:col-span-2">
+                      <label className="block text-sm font-medium text-gray-700">
+                        First name
+                      </label>
+                      <input
+                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-700 block w-full shadow-sm sm:text-sm border-gray-600 rounded-md"
+                        type="text"
+                        name="first_name"
+                        id="first_name"
+                        value={formik.values.first_name}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        autoComplete="first_name"
+                      />
+                    </div>
+
+                    <div className="col-span-6 sm:col-span-4">
+                      <label className="block text-sm font-medium text-gray-700">
+                        Last name
+                      </label>
+                      <input
+                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-700 block w-full shadow-sm sm:text-sm border-gray-600 rounded-md"
+                         type="text"
+                         name="last_name"
+                         id="last_name"
+                         value={formik.values.last_name}
+                         onChange={formik.handleChange}
+                         onBlur={formik.handleBlur}
+                         autoComplete="last_name"
+                      />
+                    </div>
+
+                    <div className="col-span-6 sm:col-span-4">
+                      <label className="block text-sm font-medium text-gray-700">
+                        Email address
+                      </label>
+                      <input
+                        class="mt-1 focus:ring-indigo-600 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-700 rounded-md"
+                        type="text"
+                        name="email"
+                        id="email"
+                        value={formik.values.email}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        autoComplete="email"
+                      />
+                    </div>
+
+                    <div className="col-span-6 sm:col-span-3">
+                      <label className="block text-sm font-medium text-gray-700">
+                        Phone Number
+                      </label>
+                    <input
+                      class="mt-1 focus:ring-indigo-500 focus:border-indigo-700 block w-full shadow-sm sm:text-sm border-gray-600 rounded-md"
+                      type="text"
+                      name="phone_number"
+                      id="phone_number"
+                      value={formik.values.phone_number}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      autoComplete="phone_number"
+                    />
+                    </div>
+
+                    <div className="col-span-1 sm:col-span-4">
+                      <label  className="block text-sm font-medium text-gray-700">
+                        Job Id
+                      </label>
+                      <input
+                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-700 block w-full shadow-sm sm:text-sm border-gray-600 rounded-md"
+                       type="text"
+                       name="job_id"
+                       id="job_id"
+                       value={formik.values.job_id}
+                       onChange={formik.handleChange}
+                       onBlur={formik.handleBlur}
+                       autoComplete="job_id"
+                      />
+                    </div>
+
+                    <div className="col-span-6 sm:col-span-6 lg:col-span-4">
+                      <label className="block text-sm font-medium text-gray-700">
+                        Salary
+                      </label>
+                    <input
+                      class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      type="text"
+                      name="salary"
+                      id="salary"
+                      value={formik.values.salary}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      autoComplete="salary"
+                      />
+                    </div>
+
+                    <div className="col-span-6 sm:col-span-3 lg:col-span-4">
+                      <label className="block text-sm font-medium text-gray-700">
+                        Manager Id
+                      </label>
+                      <input
+                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                       type="text"
+                       name="manager_id"
+                       id="manager_id"
+                       value={formik.values.manager_id}
+                       onChange={formik.handleChange}
+                       onBlur={formik.handleBlur}
+                       autoComplete="manager_id"
+                      />
+                    </div>
+
+                    <div className="col-span-6 sm:col-span-3 lg:col-span-4">
+                      <label  className="block text-sm font-medium text-gray-700">
+                        Department Id
+                      </label>
+                    <input
+                      class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      type="text"
+                      name="department_id"
+                      id="department_id"
+                      value={formik.values.department_id}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      autoComplete="department_id"
+                    />
+                    </div>
+                  </div>
+                </div>
+                </div>
             <div>
                 <label class="block text-sm font-medium text-gray-700">Profile : </label>
                 <div>
@@ -202,10 +235,17 @@ export default function EmployeeAdd(props) {
                     </div>
                 </div>
             </div>
-            <div>
-                <button type='submit' className="cursor-pointer inline-flex justify-center py-2 px-2 shadow-sm text-sm font-medium rounded-md text-indigo-500 hover:text-indigo-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={formik.handleSubmit}> Simpan </button>
-                <button className="cursor-pointer inline-flex justify-center py-2 px-2 shadow-sm text-sm font-medium rounded-md text-indigo-500 hover:text-indigo-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={() => props.setDisplay(false)}> Cancel </button>
-            </div>
+                <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                  <button type='submit' className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={formik.handleSubmit}>
+                    Save
+                  </button>
+                  <button className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={() => props.setDisplay(false)}> 
+                  Cancel 
+                  </button>
+                </div>
+              </div>
+            
+          </div>
         </div>
     )
 }

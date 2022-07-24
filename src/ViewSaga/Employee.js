@@ -3,7 +3,7 @@ import { useDispatch,useSelector } from 'react-redux'
 import config from '../config/config'
 import { GetEmployeeRequest,DelEmployeeRequest } from '../Redux-saga/Action/EmployeeAction'
 import EmployeeAdd from './EmployeeAdd'
-import EmpionEdit from './EmployeeEdit'
+import EmployeeEdit from './EmployeeEdit'
 
 export default function EmployeeView() {
     const dispatch = useDispatch()
@@ -29,7 +29,7 @@ export default function EmployeeView() {
                 {
                     displayEdit
                         ?
-                        <EmpionEdit
+                        <EmployeeEdit
                             closeAdd={() => setDisplayEdit(false)}
                             onRefresh={() => setRefresh(true)}
                             id={id}

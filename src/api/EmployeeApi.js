@@ -1,5 +1,5 @@
-import axios from "axios";
-import config from "../config/config";
+import axios from 'axios'
+import config from '../config/config'
 
 const show = async()=>{
     try {
@@ -9,16 +9,22 @@ const show = async()=>{
         return await error.message
     }
 }
-
+const image = async(id)=>{
+    try {
+        const result = await axios.get(`${config.domain}/employee/file/${id}`)
+        return result.data
+    } catch (error) {
+        return await error.message
+    }
+}
 const create = async(payload)=>{
     try {
-        const result = await axios.post(`${config.domain}/employee`,payload)
+        const result = await axios.post(`${config.domain}/employee/`,payload)
         return result
     } catch (error) {
         return await error.message
     }
 }
-
 const findOne = async(id)=>{
     try {
         const result = await axios.get(`${config.domain}/employee/${id}`)
@@ -27,11 +33,10 @@ const findOne = async(id)=>{
         return error
     }
 }
-
-const updateNoFile = async(data)=>{
-    const employee_id = data.employee_id;
+const update = async(data)=>{
+    const employee_id = parseInt(data.get("employee_id"));
     try {
-        const result = await axios.put(`${config.domain}/employee/nofile/${employee_id}`,data)
+        const result = await axios.put(`${config.domain}/employee/${employee_id}`,data)
         return result
     } catch (error) {
         return error
@@ -46,4 +51,4 @@ const deleted = async(id)=>{
     }
 }
 
-export default {show,create,findOne,updateNoFile,deleted}
+export default {show,image,create,deleted,findOne,update}
